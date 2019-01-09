@@ -1,6 +1,10 @@
 class Vendor < ApplicationRecord
-    has_many :vendor_products
-    has_many :products, through: :vendor_products
+    has_many :products
 
-    has_many :addresses
+    has_one :vendor_feature
+    
+    #belongs_to :city
+
+    
+    
 end

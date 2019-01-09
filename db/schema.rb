@@ -10,13 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_26_030953) do
-
-  create_table "addresses", force: :cascade do |t|
-    t.string "address"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 2019_01_06_201445) do
 
   create_table "categories", force: :cascade do |t|
     t.string "cat"
@@ -51,27 +45,23 @@ ActiveRecord::Schema.define(version: 2018_12_26_030953) do
     t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "vendor_id"
+    t.index ["vendor_id"], name: "index_products_on_vendor_id"
   end
 
-  create_table "regions", force: :cascade do |t|
-    t.string "region"
+  create_table "searches", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_searches_on_product_id"
+    t.index ["user_id"], name: "index_searches_on_user_id"
   end
 
   create_table "trademarks", force: :cascade do |t|
     t.text "origin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "user_searches", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "product_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_user_searches_on_product_id"
-    t.index ["user_id"], name: "index_user_searches_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -97,15 +87,6 @@ ActiveRecord::Schema.define(version: 2018_12_26_030953) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "vendor_products", force: :cascade do |t|
-    t.integer "product_id"
-    t.integer "vendor_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_vendor_products_on_product_id"
-    t.index ["vendor_id"], name: "index_vendor_products_on_vendor_id"
-  end
-
   create_table "vendors", force: :cascade do |t|
     t.string "vendor_name"
     t.string "email"
@@ -113,6 +94,8 @@ ActiveRecord::Schema.define(version: 2018_12_26_030953) do
     t.boolean "online_sale"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "city_id"
+    t.index ["city_id"], name: "index_vendors_on_city_id"
   end
 
 end
