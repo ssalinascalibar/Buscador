@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_06_201445) do
+ActiveRecord::Schema.define(version: 2019_01_10_015107) do
 
   create_table "categories", force: :cascade do |t|
     t.string "cat"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2019_01_06_201445) do
     t.string "city"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "region_id"
+    t.index ["region_id"], name: "index_cities_on_region_id"
   end
 
   create_table "countries", force: :cascade do |t|
@@ -40,13 +42,19 @@ ActiveRecord::Schema.define(version: 2019_01_06_201445) do
   end
 
   create_table "products", id: false, force: :cascade do |t|
-    t.string "name_product"
     t.text "description"
     t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "vendor_id"
+    t.string "product_name"
     t.index ["vendor_id"], name: "index_products_on_vendor_id"
+  end
+
+  create_table "regions", force: :cascade do |t|
+    t.string "region"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "searches", force: :cascade do |t|
@@ -95,6 +103,8 @@ ActiveRecord::Schema.define(version: 2019_01_06_201445) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "city_id"
+    t.string "address"
+    t.string "district"
     t.index ["city_id"], name: "index_vendors_on_city_id"
   end
 
