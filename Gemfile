@@ -7,13 +7,18 @@ ruby '2.4.1'
 gem 'rails', '~> 5.2.1', '>= 5.2.1.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+
+gem 'devise', git: 'https://github.com/plataformatec/devise.git'
+
+gem 'faker'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-gem 'devise', git: 'https://github.com/plataformatec/devise.git'
+
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
