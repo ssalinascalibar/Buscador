@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_10_015107) do
+ActiveRecord::Schema.define(version: 2019_01_21_013949) do
 
   create_table "categories", force: :cascade do |t|
     t.string "cat"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2019_01_10_015107) do
     t.index ["product_id"], name: "index_product_categories_on_product_id"
   end
 
-  create_table "products", id: false, force: :cascade do |t|
+  create_table "products", force: :cascade do |t|
     t.text "description"
     t.string "photo"
     t.datetime "created_at", null: false
