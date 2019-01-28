@@ -20,6 +20,24 @@ Product.destroy_all
 #Product.create!(name_product: 'Maqui', description: 'producto escaso')#, vendor: Vendors.first
 
 5.times do |i|
+    
+    Country.create(
+        country: "Chile"
+
+    )
+
+    Trademark.create(
+        origin: "Origin & history trademark"
+
+    )
+
+
+    Category.create(
+        cat: Faker::Commerce.department
+
+    )
+
+    
     Product.create(
         product_name: Faker::Commerce.product_name,
         description: Faker::Commerce.material,
@@ -27,6 +45,7 @@ Product.destroy_all
         
     )
 
+    
     Vendor.create(
         vendor_name: Faker::Company.name,
         email: "vendor#{i + 1}@gmail.com",
@@ -36,14 +55,17 @@ Product.destroy_all
         district: Faker::Address.state
     )
 
+    
     City.create(
         city: "Santiago"
     )
 
+    
     Region.create(
         region: "Metropolitana"
     )
 
+    
     VendorFeature.create(
         description: Faker::Company.catch_phrase,
         logo: Faker::Company.logo,
