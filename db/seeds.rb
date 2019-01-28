@@ -6,9 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-#City.destroy_all
-#Vendor.destroy_all
-#Product.destroy_all
+VendorFeature.destroy_all
+City.destroy_all
+Vendor.destroy_all
+Product.destroy_all
 
 
 
@@ -23,7 +24,36 @@
         product_name: Faker::Commerce.product_name,
         description: Faker::Commerce.material,
         photo: "http://lorempixel.com/400/200/technics/#{i + 1}/"
+        
     )
+
+    Vendor.create(
+        vendor_name: Faker::Company.name,
+        email: "vendor#{i + 1}@gmail.com",
+        phone: Faker::PhoneNumber.cell_phone,
+        online_sale: Faker::Boolean.boolean,
+        address: Faker::Address.street_address,
+        district: Faker::Address.state
+    )
+
+    City.create(
+        city: "Santiago"
+    )
+
+    Region.create(
+        region: "Metropolitana"
+    )
+
+    VendorFeature.create(
+        description: Faker::Company.catch_phrase,
+        logo: Faker::Company.logo,
+        area: Faker::Company.industry,
+        business_line: Faker::Company.type,
+        lat: Faker::Address.latitude,
+        long: Faker::Address.longitude
+
+    )
+
 end
 
 
